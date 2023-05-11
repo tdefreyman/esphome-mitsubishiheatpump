@@ -405,6 +405,22 @@ void MitsubishiHeatPump::hpStatusChanged(heatpumpStatus currentStatus) {
     this->publish_state();
 }
 
+void MitsubishiHeatPump::set_vane(char* vanePosition) {
+    ESP_LOGD(TAG, "Setting vane position: %s", vanePosition);
+    switch (this->mode) {
+        case "1":
+        case "2":
+        case "3":
+        case "4":
+        case "5":
+        case "AUTO":
+            this->hp->setVaneSetting(vanePosition);
+            this->update;
+            break;                    
+    }
+    
+}
+
 void MitsubishiHeatPump::set_remote_temperature(float temp) {
     ESP_LOGD(TAG, "Setting remote temp: %.1f", temp);
     this->hp->setRemoteTemperature(temp);
