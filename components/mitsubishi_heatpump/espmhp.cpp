@@ -406,7 +406,7 @@ void MitsubishiHeatPump::hpStatusChanged(heatpumpStatus currentStatus) {
 }
 
 void MitsubishiHeatPump::set_vane(std::string position) {
-    char* vanePosition = new char[position.lenght() + 1];
+    char* vanePosition = new char[position.length() + 1];
     strcpy(vanePosition, position.c_str());
         
     ESP_LOGD(TAG, "Setting vane position: %s", vanePosition);
