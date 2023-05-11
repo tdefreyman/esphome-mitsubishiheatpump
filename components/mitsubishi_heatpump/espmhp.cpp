@@ -407,14 +407,13 @@ void MitsubishiHeatPump::hpStatusChanged(heatpumpStatus currentStatus) {
 
 void MitsubishiHeatPump::set_vane(char* vanePosition) {
     ESP_LOGD(TAG, "Setting vane position: %s", vanePosition);
-    if (strcmp(currentSettings.fan, "AUTO") == 0 ||
-        strcmp(currentSettings.fan, "1") == 0 ||
-        strcmp(currentSettings.fan, "2") == 0 ||
-        strcmp(currentSettings.fan, "3") == 0 ||
-        strcmp(currentSettings.fan, "4") == 0 ||
-        strcmp(currentSettings.fan, "5") == 0) {
+    if (strcmp(vanePosition, "AUTO") == 0 ||
+        strcmp(vanePosition, "1") == 0 ||
+        strcmp(vanePosition, "2") == 0 ||
+        strcmp(vanePosition, "3") == 0 ||
+        strcmp(vanePosition, "4") == 0 ||
+        strcmp(vanePosition, "5") == 0) {
         this->hp->setVaneSetting(vanePosition);
-        this->update;
     }    
 }
 
